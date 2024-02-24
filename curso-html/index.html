@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"> <!--codificacion -->
+        <meta name="viewport" content="width=device-width"> <!--Ajusta el contenido dependiendo del dispositivo que se habra-->
+        <title>Portfolio @Sam.Micheaa - Ingeniero Informatico</title>
+
+        <meta name="description" content="Portfolio Sam.Micheaa, Ingeniero Informático 
+        enfocado en el desarrollo de software"> <!--Informacion que aparece en el buscador (no siempre)-->
+
+        <!-- OPEN GRAPH -->
+        <meta property="og:title" content="Portfolio de Sam.Michea">
+        <meta property="og:image" content="/image/oso.webp">
+        <meta property="og:image:alt" content="Una fotografia de un osito">
+        
+        <!-- <link rel="alternate" href="link pagina" hreflang="lenguaje de la pagina opcional"> <--- Pagina alternativa/Ej: tenerla en dos idiomas-->
+        <!-- <link rel="canonical" href="paginaprincipal">  <--- Indica cual es la pagina principal del contenido-->
+
+        <meta name="robots" content="index, follow"> <!--Para decirle que tiene que renderizar el index y que tiene que seguir los enlaces-->
+        <meta name="theme-color" content="#09f"> <!--Cambia como se ve el color de la ventana abierta en el navegador-->
+
+        <link rel="icon" type="image/webp" href="/img/oso.webp"> <!--Coloca una imagen diminuta en la ventana que se abre en el navegador-->
+    
+        <style>
+            body{
+                background: #bdecec;
+            }
+        </style>
+        
+        <script>
+            window.show.addEventListener('click', ()=>{
+                window.dialog.showModal()
+            })
+            window.hide.addEventListener('click', ()=>{
+                window.dialog.closeModal()
+            })
+        </script>
+
+    </head>
+    <body>
+        <header>
+            <h1>Portfolio de @Sam.Micheaa</h1>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3nYLTiY5skU?si=Pl7_u7SEWDY3_DBW" title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!--IFRAME= TE PERMITE INSCRUPTAR OTRA PAGINA WEB A TU SITIO
+                PUEDE SER QUE POR META DE ALGUNOS SITIOS (SEGURIDAD) NO TE DEJA QUE LAS INTEGRES A TU PAGINA
+            
+                FRAMEBORDER POR DEFECTO TIENE VALOR 0 EN IFRAME
+            -->
+
+            <nav>
+                <a href="#experiencia">Experiencia</a> <!--Enlace interno-->
+                <a href="#proyectos">Proyectos</a> <!--Enlace interno-->
+                <a 
+                href="https://www.instagram.com/sammy0612/"
+                target="_blank" 
+                rel="noreferrer"> 
+                <!--
+                    Target = _blank <--- Permite abribir una pestanha adicional a la nuestra y no que sobre ponga nuestor contenido
+                    NOREFERRER: <--- Sirve para no enviar informacion a las sgte pagina (token - password - pagina anterior - etc)--> 
+                Instagram 
+                </a>
+            </nav>
+        </header>
+        
+        <dialog id="dialog">
+            <h1>Sabias que puedes abrir una modal asi?</h1>
+            <p>y totalmente nativo?</p>
+            <button id="hide">cerrar modal</button>
+        </dialog>
+
+        <button id="show">Ver mas informacion</button>
+
+        <main> <!--Contenido principal de la pagina web, contenido replicable no debe ir en el main (header - footer)-->
+
+            <p>
+                Ingeniero Informático con experiencia en gestión de proyectos, desarrollo de aplicaciones web y análisis de
+                datos. Apasionado por la programación y la gestión. Comprometido con la excelencia y el desarrollo
+                profesional continuo.
+            </p>
+            
+            <h2 id="experiencia">
+                Experiencia
+            </h2>
+
+            <h4>PRACTICANTE PROGRAMADOR FULL-STACK | BIGEO | AGO 2023 – DIC 2023
+            </h4>
+
+            <ul> 
+                <li class="list-item"></li>
+                <li class="list-item"></li>
+            </ul>
+            <a download href="/img/oso.webp"> <!--DOWNLOAD <-- Solo funciona con recursos que tengas en tu propio dominio-->
+                <img width="300" height="200" title="Sam.Micheaa" alt="osito lindo" src="/img/oso.webp">
+            </a>
+            <h2 id="proyectos">
+                Proyectos Realizados
+            </h2>
+
+            <aside> <!-- ASIDE: Contenido que se relaciona indirectamente con lo principla del doc-->
+                <header>
+                    <h3>Mis Tecnologias Favoritas</h3>
+                </header>
+                <ol> <!--Se le puede asignar atributos como 
+                    Type= define que tipo de dato queremos que sea, numero o letra
+                    reversed= comienza la lista desde el resultado final y comienza a descontar
+                    start= definimos desde donde queremos que comience el enumerado o en listado
+                -->
+                    <li>HTML</li> 
+                    <!-- Se le puede asignar un valor y segun los atributos y orden que le 
+                        demos a "ol" sera como se vea en la web-->
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Node.js</li>
+                </ol>
+            </aside>
+
+            <!-- <button>Haz clic aqui</button> -->
+
+            <section> <!-- Section: Abarcar secciones genericas de un documento-->
+                <article> <!-- Article: Block independiente de info, se puede copiar y pegar en otro punto y seguira teniendo sentido la informacion que contiene-->
+                    <header>
+                        <h4>Bigeo - Dashboard</h4>
+                        <img 
+                        style="width: 100%; aspect-ratio:616/411;"
+                        loading="lazy"
+                        src="img/oso.webp" 
+                        alt="La imagen asociada al proyecto puede quedar en un estado de Loading">
+                        <!--LOADING LAZY: Hace que la imagen se renderice solo cuando sea necesario,
+                        esto permite reducir los recursos consumidos por la pagina a la hora de cargar.
+                        NO ES RECOMENDABLE COLOCARLO EN IMAGENES QUE ESTEN MUY CERCANAS AL HEADER O QUE 
+                        INVOLUCREN LA VISTA PRINCIPAL DE LA PAGINA AL CARGAR
+                    
+                        Aspect Ratio: Relacion de aspecto segun imagen
+                        Width 100%: ocupa el 100% del ancho de la imagen
+                    -->
+                    </header>
+                    <p>
+                        Desarrollo de un modulo web tipo Dashboard el cual nos permite visualizar informacion estadistica en tiempo real
+                    </p>
+                    <footer><small>Tecnologias Utilizadas: HTML - Tailwind CSS - JavaScript - REACJS - NodeJS</small></footer>
+                </article>
+            </section>
+            <section>
+                <h2>Preguntas Frecuentes</h2>
+                <details> <!-- Si pones "Open" a la hora de abrir la pagina estara abierta por defecto el summary que lo tenga-->
+                    <summary>¿Que estudios tienes?</summary>
+                    <p>Estudie Ingenieria Informatica por 4 años en el Instituto Profesional Duoc UC, Viña del Mar</p>
+                </details>
+                <details>
+                    <summary>¿Cuales son tus hobbies?</summary>
+                    <p>Disfruto el entrenar con pesas durante mi dia a dia, tambien suelo jugar para distraer la mente y ver series animadas</p>
+                </details>
+            </section>
+            <section>
+                <h2>Formulario de Contacto</h2>
+                <form method="post" action="/">
+                    <fieldset>
+                        <legend>informacion Personal</legend>
+
+                        <label>Nombre:
+                            <input 
+                            type="text" 
+                            name="name" 
+                            placeholder="Samuel Michea" required>
+                        </label>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="name" 
+                        placeholder="Sam.micheaa@gmail.com" required>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Informacion Adicional</legend>
+                        <label>Telefono:
+                            <input 
+                            type="tel" 
+                            name="telefono" 
+                            placeholder="+569XXXXXXXX" required>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Otros</legend>
+                        
+                        <div>
+                            <label for="why">¿Por que quieres contactar?</label>
+                            <select name="why" id="why">
+                                <option value="1">Trabajo</option>
+                                <option value="2">Duda</option>
+                                <option value="3">Mas Informacion</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="terms">¿Aceptar terminos?</label>
+                            <input type="checkbox" name="terms" id="terms" required>
+                        </div>
+
+                        <div>
+                            <datalist id="lenguages">
+                                <option value="JavaScript"></option>
+                                <option value="Python"></option>
+                                <option value="Java"></option>
+                                <option value="C#"></option>
+                            </datalist>
+                            <label>¿Con que lenguajes quieres que te ayude?
+                                <input list="lenguages" name="lenguages">
+                            </label>
+
+                        </div>
+                    </fieldset>
+                    <input type="submit" value="Enviar Contacto" pattern="[0-9]{9}">
+                </form>
+            </section>
+        </main>
+        <footer>
+            Copyright: @ 2024 - El Portfolio de Sam.Micheaa
+            
+            <a href="mailto:sam.micheaa@gmail.com"></a>
+            <a href="tel:+56958053769"></a>
+            <!-- <a href="whatsapp://send?text= Hola Samuel!"></a> /// PARA ENVIAR MENSAJE A WSP -->
+        </footer>
+
+        <audio controls src="https://youtube.com/watch?v=Oa_RSwwpPaA"></audio>
+        <!--Es exactamente lo mismo que video, pero sin video xd-->
+        <video autoplay muted controls src="https://youtube.com/watch?v=Oa_RSwwpPaA"></video>
+        <!--MUTED: SILENCIA EL VIDEO
+            AUTOPLAY: LO AUTOREPRODUCE
+            LOOP: HACE QUE VUELVA A EMPEZAR
+            POSTER="/IMG.JPG: HACE QUE EL VIDEO TENGA UN POSTER"
+        -->
+    </body>
+</html>
+
+ 

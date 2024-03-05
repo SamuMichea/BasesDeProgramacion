@@ -20,21 +20,76 @@
         <meta name="theme-color" content="#09f"> <!--Cambia como se ve el color de la ventana abierta en el navegador-->
 
         <link rel="icon" type="image/webp" href="/img/oso.webp"> <!--Coloca una imagen diminuta en la ventana que se abre en el navegador-->
-    
-        <style>
-            body{
-                background: #bdecec;
-            }
-        </style>
         
-        <script>
-            window.show.addEventListener('click', ()=>{
-                window.dialog.showModal()
-            })
-            window.hide.addEventListener('click', ()=>{
-                window.dialog.closeModal()
-            })
-        </script>
+        <!-- selector = Seleccionamos el elemento que deseamos estilar -->
+        <!-- propiedad + valor = declaracion -->
+        <!-- rgba(0,0,0,0.2) = red - green - blue (a => opacidad) => permite definir con numeros como parametros a la hora de estilar -->
+        <!-- rgb(0 0 0 / 50%) = es lo mismo pero escrito de una manera mas simplificada-->
+        <!-- hsl(321, 30%, 59%) = matiz(hue) - saturaicion(chroma) - luminosidad(lightness) -->
+        <!-- border: 99px solid #color => estos tres parametros definen el ancho del borde, el estilo y el color -->
+        <!-- border => por lo general tiene un valor initial 
+            initial: establece un valor predefinido por las especificaciones de css
+            unset: resetea los valores (quita las propiedades heredadas) 
+            revert: revierte los valores de la herencia (no afecta al valor del navegador)  
+            inherit: que fuerza el valor de la herencia 
+        -->
+        <style> 
+            /*
+             selector {
+                propiedad: valor;
+            }
+            */
+            h1 {
+                color: rgb(0, 132, 255);
+                /* border-width: 3px;
+                border-style: solid;
+                border-color: currentColor; ===> Copia el color del elemento actual o superior, realiza un tipo de herencia*/
+            }
+
+            body {
+                background: #dbfbff;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            .link{
+                color: rgb(218, 5, 5);
+            }
+
+            .link:hover{
+                outline:5px solid red;
+                /* 
+                border: afecta al contenido 
+                outline: dibuja por encima del contenido
+                */
+            }
+
+            .link:active{
+                outline: 10px solid blue
+                /*
+                focus: realiza la accion al estar enfocado (tecla tabulador)
+                active: al hacer o mantener clic encima se activa
+                hover: al pasar el mouse por encima se activa
+                */
+            }
+
+            #show{
+                background-color: #09f;
+                color: white;
+                border: 0;
+            }
+
+            .description{
+                border: 1px solid red; 
+            }
+            /*seudo clase: situacion especial del elemento*/
+            li:first-child {
+                color: pink;
+            }
+            li:last-child {
+                color: purple;
+            }
+            
+        </style>
 
     </head>
     <body>
@@ -50,16 +105,17 @@
             -->
 
             <nav>
-                <a href="#experiencia">Experiencia</a> <!--Enlace interno-->
-                <a href="#proyectos">Proyectos</a> <!--Enlace interno-->
+                <a  class="link" href="#experiencia">Experiencia</a> <!--Enlace interno-->
+                <a class="link" href="#proyectos">Proyectos</a> <!--Enlace interno-->
                 <a 
+                class="link"
                 href="https://www.instagram.com/sammy0612/"
                 target="_blank" 
                 rel="noreferrer"> 
                 <!--
                     Target = _blank <--- Permite abribir una pestanha adicional a la nuestra y no que sobre ponga nuestor contenido
                     NOREFERRER: <--- Sirve para no enviar informacion a las sgte pagina (token - password - pagina anterior - etc)--> 
-                Instagram 
+                Instagram  
                 </a>
             </nav>
         </header>
@@ -72,9 +128,18 @@
 
         <button id="show">Ver mas informacion</button>
 
+        <script>
+            window.show.addEventListener('click', ()=>{
+                window.dialog.showModal()
+            })
+            window.hide.addEventListener('click', ()=>{
+                window.dialog.close()
+            })
+        </script>
+
         <main> <!--Contenido principal de la pagina web, contenido replicable no debe ir en el main (header - footer)-->
 
-            <p>
+            <p class="description">
                 Ingeniero Informático con experiencia en gestión de proyectos, desarrollo de aplicaciones web y análisis de
                 datos. Apasionado por la programación y la gestión. Comprometido con la excelencia y el desarrollo
                 profesional continuo.
@@ -155,8 +220,8 @@
             </section>
             <section>
                 <h2>Formulario de Contacto</h2>
-                <form method="post" action="/">
-                    <fieldset>
+                <form method="post" action="/"> <!--action: define a donde debe enviar la informacion este formulario-->
+                    <fieldset><!---Agrupacion de los distintos inputs que se tendran en el form-->
                         <legend>informacion Personal</legend>
 
                         <label>Nombre:

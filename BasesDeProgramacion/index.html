@@ -52,7 +52,21 @@
             }
 
             .link{
+                /*  
+                OPERADORES CSS:
+                
+                article > p => el operador hace que solo se estilice los hijos directos
+                p ~ span => estila todos los elementos(span) que este despues de la p, sin importar si hay otros elementos de por medio(~ = siguiente elemento), respeta la semantica y 
+                p + span => se asegura que el elemento se estilice solo cuando el span este de siguiente a la p (solo estiliza el primer siguiente elemento)
+                (selector1 + selector2) => selector1 es la condicional y el selector2 es el elemento estilizado
+                { 
+                    declaracion
+                }
+
+                
+                */
                 color: rgb(218, 5, 5);
+
             }
 
             .link:hover{

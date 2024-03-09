@@ -21,29 +21,86 @@
 
         <link rel="icon" type="image/webp" href="/img/oso.webp"> <!--Coloca una imagen diminuta en la ventana que se abre en el navegador-->
         
+        <!-- INFORMACION ELEMENTOS -->
+        
+        <!-- Estructura de un css:
+             selector {
+                propiedad: valor;
+            }
+        -->
         <!-- selector = Seleccionamos el elemento que deseamos estilar -->
         <!-- propiedad + valor = declaracion -->
         <!-- rgba(0,0,0,0.2) = red - green - blue (a => opacidad) => permite definir con numeros como parametros a la hora de estilar -->
         <!-- rgb(0 0 0 / 50%) = es lo mismo pero escrito de una manera mas simplificada-->
         <!-- hsl(321, 30%, 59%) = matiz(hue) - saturaicion(chroma) - luminosidad(lightness) -->
         <!-- border: 99px solid #color => estos tres parametros definen el ancho del borde, el estilo y el color -->
-        <!-- border => por lo general tiene un valor initial 
+        <!-- currentColor = Copia el color del elemento actual o superior, realiza un tipo de herencia -->
+        <!-- 
+            padding (1px,4px,5px,2px): Al ocupar los 4 parametros damos a entender que nos referimos a arriba - abajo - derecha - izquierda
+            padding (2px,4px): Al ocupar 2, el primer parametro definira la distancia de (arriba + abajo) tendra esa altura y el segundo sera la distancia de (derecha + izquierda)
+            padding (10px): Al solo definir un parametro, daremos a entender que se ocupara la misma meedida en todas las direcciones
+        -->
+        <!-- Border: no afecta directamente a la dimension de la caja, si no, envuelve la caja añadiendo mas pixeles a sus bordes-->
+        <!-- 
+            border => por lo general tiene un valor initial 
             initial: establece un valor predefinido por las especificaciones de css
             unset: resetea los valores (quita las propiedades heredadas) 
             revert: revierte los valores de la herencia (no afecta al valor del navegador)  
             inherit: que fuerza el valor de la herencia 
         -->
-        <style> 
-            /*
-             selector {
-                propiedad: valor;
+        <!--
+            UNIDADES CSS:
+            
+            px => el pixel no es una unidad absoluta al 100%, depende de la cantidad de px que contenga el dispositivo, por otro lado esta la densidad de px en la que se quiere renderizar el contenido
+            % => el porcentaje es una unidad relativa del contenedor padre (la altura y anchura de un body es distanta a la de un div)
+            vh/w => viewport height/width considera la anchura y alto del dispositivo desde donde se este abriendo el aplicativo
+            box-sizing (content-box)= por defecto tiene valor de (content-box), lo que causa que al ancho y alto se le sume el padding y el border
+            box-sizing (border-box)= este metodo considerara dentro de la suma todo lo del borde hacia adentro
+            
+            resumen box-sizing = uno considera los bordes en la suma para cumplir el width y height (border-box) y el otro considera como un punto a parte todo lo relacionado
+                                 a los bordes(content-box), por lo que suma al width y height los valores (border + padding)
+        -->
+        
+        <!--
+            OPERADORES CSS (> ~ +):
+            
+            article > p => el operador hace que solo se estilice los hijos directos
+            p ~ span => estila todos los elementos(span) que este despues de la p, sin importar si hay otros elementos de por medio(~ = siguiente elemento), respeta la semantica y 
+            p + span => se asegura que el elemento se estilice solo cuando el span este de siguiente a la p (solo estiliza el primer siguiente elemento)
+            (selector1 + selector2) => selector1 es la condicional y el selector2 es el elemento estilizado
+            { 
+                declaracion
             }
-            */
+        -->
+        
+        <!-- 
+            ACCIONES CSS:
+            
+            focus: realiza la accion al estar enfocado (tecla tabulador)
+            active: al hacer o mantener clic encima se activa
+            hover: al pasar el mouse por encima se activa
+        -->
+        <!-- 
+            DETALLES IMPORTANTES CSS:
+            
+            seudo clase: situacion especial del elemento (li:first-child ==> situacion especifica de la accion)
+            
+            !importan => hace que el estilizado que le asignes algun elemento ignore cualquier otro sin importan su nivel de especificidad
+            OJO => si se coloca a dos declaraciones que afecten al mismo elemento, este hara un filtrado para saber cual tiene mas valor
+            ES RECOMENDABLE NO USARLO, AL IGUAL QUE EL ESTILO EN LINEA (<p style="ESTO NO">)
+                
+                El algoritmo tiene ciertas REGLAS que decide cual es mas IMPORTANTE a la hora de ESTILIZAR, en caso que apunten dos selectores al mismo elemento prioriza antes un ID que algo generico
+                PARA SABER EL NIVEL DE IMPORTANCIA PODEMOS ENTRAR A ==> Specifity.keegan.st
+                
+            ELEMENTOS que utilicen la CAJA tipo LINEA no se les puede cambiar ancho o alto a menos que... 
+
+            Display => sirve para cambiar el estilo de la caja que contiene el elemento, si modificas las propiedades de algun elemento, permitira modificar 
+            ciertas cosas como por ejemplo el ancho y alto de una caja tipo linea. 
+        -->
+        <style> 
+            
             h1 {
                 color: rgb(0, 132, 255);
-                /* border-width: 3px;
-                border-style: solid;
-                border-color: currentColor; ===> Copia el color del elemento actual o superior, realiza un tipo de herencia*/
             }
 
             body {
@@ -52,38 +109,16 @@
             }
 
             .link{
-                /*  
-                OPERADORES CSS:
-                
-                article > p => el operador hace que solo se estilice los hijos directos
-                p ~ span => estila todos los elementos(span) que este despues de la p, sin importar si hay otros elementos de por medio(~ = siguiente elemento), respeta la semantica y 
-                p + span => se asegura que el elemento se estilice solo cuando el span este de siguiente a la p (solo estiliza el primer siguiente elemento)
-                (selector1 + selector2) => selector1 es la condicional y el selector2 es el elemento estilizado
-                { 
-                    declaracion
-                }
-
-                
-                */
                 color: rgb(218, 5, 5);
 
             }
 
             .link:hover{
                 outline:5px solid red;
-                /* 
-                border: afecta al contenido 
-                outline: dibuja por encima del contenido
-                */
             }
 
             .link:active{
                 outline: 10px solid blue
-                /*
-                focus: realiza la accion al estar enfocado (tecla tabulador)
-                active: al hacer o mantener clic encima se activa
-                hover: al pasar el mouse por encima se activa
-                */
             }
 
             #show{
@@ -95,7 +130,7 @@
             .description{
                 border: 1px solid red; 
             }
-            /*seudo clase: situacion especial del elemento*/
+
             li:first-child {
                 color: pink;
             }

@@ -1,0 +1,187 @@
+<!-- INFORMACION ELEMENTOS -->
+        
+        <!-- Estructura de un css:
+             selector {
+                propiedad: valor;
+            }
+        -->
+        <!-- selector = Seleccionamos el elemento que deseamos estilar -->
+        <!-- propiedad + valor = declaracion -->
+        <!-- rgba(0,0,0,0.2) = red - green - blue (a => opacidad) => permite definir con numeros como parametros a la hora de estilar -->
+        <!-- rgb(0 0 0 / 50%) = es lo mismo pero escrito de una manera mas simplificada-->
+        <!-- hsl(321, 30%, 59%) = matiz(hue) - saturaicion(chroma) - luminosidad(lightness) -->
+        <!-- border: 99px solid #color => estos tres parametros definen el ancho del borde, el estilo y el color -->
+        <!-- currentColor = Copia el color del elemento actual o superior, realiza un tipo de herencia -->
+        <!-- 
+            padding (1px,4px,5px,2px): Al ocupar los 4 parametros damos a entender que nos referimos a arriba - abajo - derecha - izquierda
+            padding (2px,4px): Al ocupar 2, el primer parametro definira la distancia de (arriba + abajo) tendra esa altura y el segundo sera la distancia de (derecha + izquierda)
+            padding (10px): Al solo definir un parametro, daremos a entender que se ocupara la misma meedida en todas las direcciones
+        -->
+        <!-- Border: no afecta directamente a la dimension de la caja, si no, envuelve la caja añadiendo mas pixeles a sus bordes-->
+        <!-- 
+            border => por lo general tiene un valor initial 
+            initial: establece un valor predefinido por las especificaciones de css
+            unset: resetea los valores (quita las propiedades heredadas) 
+            revert: revierte los valores de la herencia (no afecta al valor del navegador)  
+            inherit: que fuerza el valor de la herencia 
+        -->
+        <!--
+            UNIDADES y CAJAS CSS:
+            
+            px => el pixel no es una unidad absoluta al 100%, depende de la cantidad de px que contenga el dispositivo, por otro lado esta la densidad de px en la que se quiere renderizar el contenido
+            % => el porcentaje es una unidad relativa del contenedor padre (la altura y anchura de un body es distanta a la de un div)
+            vh/w => viewport height/width considera la anchura y alto del dispositivo desde donde se este abriendo el aplicativo
+            box-sizing (content-box)= por defecto tiene valor de (content-box), lo que causa que al ancho y alto se le sume el padding y el border
+            box-sizing (border-box)= este metodo considerara dentro de la suma todo lo del borde hacia adentro
+            
+            overflow: 
+                hidden = recorta el contenido segun el tamano de la caja, si bien el contenido esta ahi, no esta visible
+                visible = no recorta contenido y se dibuja fuera de la caja contenedora
+                scroll = recorta el contenido, pero a diferencia del hidden, permite movilizarnos a traves de barras horizontal/vertical dentro de la caja para visualizar el contenido
+                auto = se ajusta dependiendo del navegador y escoge entre cualquiera de las anteriores 3 opciones, es la mas recomendada a usar refiriendonos al OVERFLOW
+            
+                text-overflow: (identifica si el desbordamiento es tipo texto, de ser asi aplica algun parametro)
+                clip: recorta donde acabe el texto segun el tamano de la caja
+                ellipsis: identifica en que punto habra desbordamiento del texto y pone tres puntos suspensivos antes de que el texto sea cortado
+
+            resumen box-sizing = uno considera los bordes en la suma para cumplir el width y height (border-box) y el otro considera como un punto a parte todo lo relacionado
+                                 a los bordes(content-box), por lo que suma al width y height los valores (border + padding)
+
+            position:
+                static = funcion por defecto, simplemente coloca el elemento en orden consecutiva en los elementos, se mantiene dentro de su contenedor
+                absolute = al tener absolute, se posiciona y edita segun la estructura del documento (pag web), sale de los parametros establecidos por su contenerdor
+                            la manera correcta para contenerlo es usando position "relative" en su contenedor 
+                relative = crea punto relativo para que cualquiera de sus hijos lo tome como referencia, al no tener esto, los hijos usaran el documento como referencia
+                fixed = parecido al absolute, pero no se mueve al hacer scroll, se queda fijo en pantalla, las cordenadas que se usen seran relativas a la pantalla (Viewport)
+                sticky = no se queda siempre fijo en pantalla, se queda pegado en el contenedor(se mantiene en pantalla) hasta el maximo espacio del contenedor y considera el relative como punto de referencia
+            
+            Z-index: Permite definir el nivel de capa (profundidad) del modelo 3D del HTML segun numeros
+            order: Permite definir de manera VISUAL como queremos que esten ordenados los elementos
+
+            Display:
+                (default)block = mostrar el contenido como si fuese una caja, separa los contenedores por bloques y cada elemento (caja) realiza un salto de linea
+                        line = cada elemento va uno seguido del otro (der - izq), el tamaño depende del contenido
+                        flex = se usa directamente en el contenedor, no en el hijo. Permite alinear a los hijos de distintas maneras mas eficientes, acomoda en filas
+      
+                
+                --DEFAULT AND SOME SETTINGS--
+            FLEX BLOX:
+
+(EJE PRINCIPAL) Flex-direction: (trabaja solo en 1 solo eje)
+                    (default)row = acomoda en base a filas 
+                            column = acomoda en base a columnas
+                            column/row -reverse = acomoda en el sentido contrario el contenido
+                            rtl = rigth to left (acomoda el contenido de derecha a izquierda)
+                            writing-mode = vertical-lr (acomoda la manera en la que se escribe el contenido de izquierda a derecha)
+                Flex-wrap:
+                    (default)nowwrap = fuerza que los elementos caigan en 1 sola fila
+                            wrap = si el contenido no cabe en una sola fila, permite al sistema realizar un salto de linea 
+                Flex-flow:
+                    es una combinacion de flex-direction + flex-wrap
+
+                ESTO VA EN LOS HIJOS:
+                    Flex-grow: 0(TRUE) / 1(FALSE); Los elementos NO crecen
+                    Flex-shrink: 0(TRUE) / 1(FALSE) ; Los elemenetos pueden reducir su tamaño a un tamaño más pequeño que su flex-basis
+                    Flex-basis: auto; Los elementos tienen un tamaño base en auto (se ajusta segun el contenido que tenga cada uno)
+                                0; si ponemos 0, se ajusta para que todos tengan el mismo espacio, independientemente del content
+                    Flex: 1; Es como dejar el ajuste de basis en 0, shrink en 1 y grow en 1
+                    Flex: 2; si colocamos en algun hijo que ya tenga un config anterior, duplicara las caracteristicas de ese
+
+            DISTRIBUCION EN EL EJE "ROW" DEL FLEX:
+
+(SE AJUSTA      Justify-Content: 
+SEGUN EJE           center: Centra los elementos 
+PRINCIPAL)          space-beteewn: Realiza un espacio ENTRE los elementos
+                    space-around: Deja el mismo espacio a los ALREDEDORES de cada elemento
+                    space-evenly: Similar al beteewn, pero con la diferencia que deja el MISMO espacio ENTRE los elementos
+                    flex-star: Acomoda los elementos al inicio del eje
+                    flex-end: Acomoda los elementos al final del eje
+                    Gap: permite definir la separacion ENTRE los ELEMENTOS, puedes utilizar distintas unidades de medida
+            
+            DISTRIBUCION EN EL EJE "COLUMN" DEL FLEX:
+
+                TIENEN LOS MISMO PARAMS QUE Justify-Content
+
+(SE AJUSTA      -Align-Content:   (con el multilinea) 
+SEGUN EJE           Acomoda los elementos del contenedor
+PRINCIPAL)          
+            
+(DISTRIBUCION   -Align-items
+A NIVEL DE
+CONTENEDOR)
+
+                -Aling-self: 
+                    Permite decirle al elemento en especifico (selector) si deseamos que se alinee de manera diferente a como el padre dice como se deben alinear
+                    ej:
+                        .id:nth-child(1),
+                        .id:nth-child(4),
+                        {
+                            align-self: flex-start
+                        }
+
+            --------------!!!SUELE USARSE MAS EL JUSTIFY-CONENT + ALIGN-ITEMS¡¡¡-------------------
+                                                    (FILA)         (COLUMNA)
+
+---------------------------------------------------------------------------------------------------
+
+        APILAMNIENTO: Los elementos HTML dibujados son en 3D, por ende hay un eje Z (profundidad) 
+            
+            ---El contenido siempre queda por delante del contenedor---
+            
+            Centrar div con position absolute:
+                inset = 0 (da a entender que top, left, bottom, right tiene este valor)
+                margin = auto (OBLIGATORIO: permite detectar al sistema que debe tener la misma distancia por todos los sitios y que los margenes deben ser auto)
+            
+                ---///Estilar la barra del scroll es posible (scrollbar playground), solo es recomendable estilar barras de cajas internas, no la de los navegadores///---
+
+            LA ALTURA Y ANCHURA MINIMA DEPENDE TAMBIEN DE OTROS PARAMETROS
+        -->
+        
+        <!--
+            OPERADORES CSS (> ~ +):
+            
+            article > p => el operador hace que solo se estilice los hijos directos
+            p ~ span => estila todos los elementos(span) que este despues de la p, sin importar si hay otros elementos de por medio(~ = siguiente elemento), respeta la semantica y 
+            p + span => se asegura que el elemento se estilice solo cuando el span este de siguiente a la p (solo estiliza el primer siguiente elemento)
+            (selector1 + selector2) => selector1 es la condicional y el selector2 es el elemento estilizado
+            { 
+                declaracion
+            }
+        -->
+        
+        <!-- 
+            ACCIONES CSS:
+            
+            focus: realiza la accion al estar enfocado (tecla tabulador)
+            active: al hacer o mantener clic encima se activa
+            hover: al pasar el mouse por encima se activa
+        -->
+
+        <!--
+            CSS FILTROS
+            
+            coarse ==> Identifica que se usa el dedo para interactuardedo
+            Fine ==> Identifica que posee precision exacta (mouse, lapiz, etc)
+            any hover ==> Cualquier mecanismo que pueda interactuar con el sistema (lapiz, flecha de mouse, etc)
+
+
+        -->
+
+        <!-- 
+            DETALLES IMPORTANTES CSS:
+            
+            seudo clase: situacion especial del elemento (li:first-child ==> situacion especifica de la accion)
+            
+            !importan => hace que el estilizado que le asignes algun elemento ignore cualquier otro sin importan su nivel de especificidad
+            OJO => si se coloca a dos declaraciones que afecten al mismo elemento, este hara un filtrado para saber cual tiene mas valor
+            ES RECOMENDABLE NO USARLO, AL IGUAL QUE EL ESTILO EN LINEA (<p style="ESTO NO">)
+                
+                El algoritmo tiene ciertas REGLAS que decide cual es mas IMPORTANTE a la hora de ESTILIZAR, en caso que apunten dos selectores al mismo elemento prioriza antes un ID que algo generico
+                PARA SABER EL NIVEL DE IMPORTANCIA PODEMOS ENTRAR A ==> Specifity.keegan.st
+                
+            ELEMENTOS que utilicen la CAJA tipo LINEA no se les puede cambiar ancho o alto a menos que... 
+
+            Display => sirve para cambiar el estilo de la caja que contiene el elemento, si modificas las propiedades de algun elemento, permitira modificar 
+            ciertas cosas como por ejemplo el ancho y alto de una caja tipo linea. 
+        -->
+         
